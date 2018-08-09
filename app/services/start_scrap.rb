@@ -28,6 +28,10 @@ class StartScrap
   end
 
   def save
+    a = Crypto.all.ids
+    if a.length == 1
+      Crypto.last.destroy
+    end
     Crypto.create(name: "#{@name}", value: "#{@crypto_hash.values_at("#{@name}")}")
   end
 end
